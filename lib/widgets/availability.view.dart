@@ -51,6 +51,8 @@ class AvailabilityResultView extends StatelessWidget {
         );
       }).toList();
 
+      print(orderMedicines.length);
+
       // Create the order with selected options
       final order = Order(
         userId: int.parse(SharedPreferencesHelper.getString("userId")!),
@@ -78,8 +80,9 @@ class AvailabilityResultView extends StatelessWidget {
         (Route<dynamic> route) => false,
       );
     } catch (e) {
+      print(e);
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to place order: $e')),
+        SnackBar(content: Text('Failed to place order')),
       );
     }
   }

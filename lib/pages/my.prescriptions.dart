@@ -51,7 +51,7 @@ class _MyPrescriptionsState extends State<MyPrescriptions>
     try {
       final prescriptions = await PrescriptionService.getPrescriptions();
       setState(() {
-        _prescriptions = prescriptions;
+        _prescriptions = prescriptions.reversed.toList();
         _isLoading = false;
       });
     } catch (e) {
@@ -121,7 +121,7 @@ class _MyPrescriptionsState extends State<MyPrescriptions>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("My Prescriptions")),
+      appBar: AppBar(title: const Text("My Prescriptions and Orders")),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : _errorMessage.isNotEmpty

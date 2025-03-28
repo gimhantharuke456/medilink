@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:medilink/models/medicine.model.dart';
+import 'package:medilink/models/prescription.model.dart';
 import 'package:medilink/services/medicine.service.dart';
+import 'package:medilink/services/prescription.service.dart';
+import 'package:medilink/utils/prefs.dart';
+import 'package:medilink/widgets/order.placement.modal.dart';
 
 class SingleItemView extends StatefulWidget {
   final int itemId;
@@ -41,11 +45,9 @@ class _SingleItemViewState extends State<SingleItemView> {
   // Handle "Buy Now" button click
   void _handleBuyNow() {
     if (_medicine != null) {
-      // Add your logic for handling the purchase here
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-            content: Text(
-                'You bought ${_medicine!.name} for \$${_medicine!.price.toStringAsFixed(2)}')),
+      showDialog(
+        context: context,
+        builder: (context) => OrderPlacementModal(medicine: _medicine!),
       );
     }
   }
