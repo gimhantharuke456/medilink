@@ -174,14 +174,13 @@ class _LoginPageState extends State<LoginPage> {
               MaterialPageRoute(builder: (context) => const WelcomeHomePage()),
               (Route<dynamic> route) => false, // This prevents going back
             );
-            if (user['role'] == 'pharmacy') {
-              Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const PharmacyHomePage()),
-                (Route<dynamic> route) => false, // This prevents going back
-              );
-            }
+          }
+          if (user['role'] == 'pharmacy') {
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => const PharmacyHomePage()),
+              (Route<dynamic> route) => false, // This prevents going back
+            );
           }
         }
       } catch (e) {
